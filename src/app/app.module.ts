@@ -7,9 +7,17 @@ import { RouterModule } from '@angular/router';
 import { GlobalInterceptor } from './http.interceptors';
 import { AppRoutingModule } from './app.routes';
 
+import { LoginComponent } from './auth/login/login.component';
+
+import { CheckboxModule } from 'primeng/checkbox';
+import {StyleClassModule} from 'primeng/styleclass';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { RippleModule } from 'primeng/ripple';
 @NgModule({
     declarations:[
-        AppComponent
+        AppComponent,
+        LoginComponent
     ],
     imports:[
         BrowserModule,
@@ -17,6 +25,12 @@ import { AppRoutingModule } from './app.routes';
         RouterModule,
         HttpClientModule,
         BrowserAnimationsModule,
+
+        CheckboxModule,
+        StyleClassModule,
+        ButtonModule,
+        InputTextModule,
+        RippleModule
         
     ],
     providers:[
