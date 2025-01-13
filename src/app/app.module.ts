@@ -7,44 +7,24 @@ import { RouterModule } from '@angular/router';
 import { GlobalInterceptor } from './http.interceptors';
 import { AppRoutingModule } from './app.routes';
 
-import { LoginComponent } from './auth/login/login.component';
-import { SignUpComponent} from './auth/sign-up/sign-up.component'
-
-import { CheckboxModule } from 'primeng/checkbox';
-import {StyleClassModule} from 'primeng/styleclass';
-import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
-import { RippleModule } from 'primeng/ripple';
 @NgModule({
-    declarations:[
+    declarations: [
         AppComponent,
-        LoginComponent,
-        SignUpComponent
     ],
-    imports:[
+    imports: [
         BrowserModule,
-        AppRoutingModule,
+        AppRoutingModule, // App-level routing
         RouterModule,
         HttpClientModule,
         BrowserAnimationsModule,
-
-        CheckboxModule,
-        StyleClassModule,
-        ButtonModule,
-        InputTextModule,
-        RippleModule
-        
     ],
-    providers:[
+    providers: [
         {
             provide: HTTP_INTERCEPTORS,
             useClass: GlobalInterceptor,
             multi: true,
         },
     ],
-    bootstrap:[AppComponent]
-    
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
-
-
+export class AppModule {}
