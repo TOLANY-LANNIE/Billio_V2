@@ -8,6 +8,7 @@ import { GlobalInterceptor } from './http.interceptors';
 import { AppRoutingModule } from './app.routes';
 
 import { LoginComponent } from './auth/login/login.component';
+import { SignUpComponent} from './auth/sign-up/sign-up.component'
 
 import { CheckboxModule } from 'primeng/checkbox';
 import {StyleClassModule} from 'primeng/styleclass';
@@ -17,7 +18,8 @@ import { RippleModule } from 'primeng/ripple';
 @NgModule({
     declarations:[
         AppComponent,
-        LoginComponent
+        LoginComponent,
+        SignUpComponent
     ],
     imports:[
         BrowserModule,
