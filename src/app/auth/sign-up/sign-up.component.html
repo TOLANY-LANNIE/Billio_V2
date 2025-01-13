@@ -6,27 +6,86 @@
             <span class="text-600 font-medium line-height-3 text-blue-500">Create your account to get started</span>
         </div>
     
-        <div>
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
             <label for="firstname" class="block text-900 font-medium mb-2">First Name</label>
-            <input id="firstname" type="text" placeholder="First Name" pInputText class="w-full mb-3">
+            <input id="firstname" 
+                   type="text" 
+                   formControlName="firstName"
+                   placeholder="First Name" 
+                   pInputText 
+                   class="w-full mb-1"
+                   [ngClass]="{'ng-invalid ng-dirty': (submitted || signupForm.get('firstName')?.touched) && signupForm.get('firstName')?.errors}">
+            <small class="p-error block mb-3" *ngIf="(submitted || signupForm.get('firstName')?.touched) && signupForm.get('firstName')?.errors">
+                <span *ngIf="signupForm.get('firstName')?.errors?.['required']">First name is required.</span>
+                <span *ngIf="signupForm.get('firstName')?.errors?.['minlength']">First name must be at least 2 characters.</span>
+            </small>
 
             <label for="surname" class="block text-900 font-medium mb-2">Surname</label>
-            <input id="surname" type="text" placeholder="Surname" pInputText class="w-full mb-3">
+            <input id="surname" 
+                   type="text" 
+                   formControlName="surname"
+                   placeholder="Surname" 
+                   pInputText 
+                   class="w-full mb-1"
+                   [ngClass]="{'ng-invalid ng-dirty': (submitted || signupForm.get('surname')?.touched) && signupForm.get('surname')?.errors}">
+            <small class="p-error block mb-3" *ngIf="(submitted || signupForm.get('surname')?.touched) && signupForm.get('surname')?.errors">
+                <span *ngIf="signupForm.get('surname')?.errors?.['required']">Surname is required.</span>
+                <span *ngIf="signupForm.get('surname')?.errors?.['minlength']">Surname must be at least 2 characters.</span>
+            </small>
 
             <label for="email1" class="block text-900 font-medium mb-2">Email</label>
-            <input id="email1" type="text" placeholder="Email address" pInputText class="w-full mb-3">
+            <input id="email1" 
+                   type="email" 
+                   formControlName="email"
+                   placeholder="Email address" 
+                   pInputText 
+                   class="w-full mb-1"
+                   [ngClass]="{'ng-invalid ng-dirty': (submitted || signupForm.get('email')?.touched) && signupForm.get('email')?.errors}">
+            <small class="p-error block mb-3" *ngIf="(submitted || signupForm.get('email')?.touched) && signupForm.get('email')?.errors">
+                <span *ngIf="signupForm.get('email')?.errors?.['required']">Email is required.</span>
+                <span *ngIf="signupForm.get('email')?.errors?.['email']">Please enter a valid email address.</span>
+            </small>
     
             <label for="password1" class="block text-900 font-medium mb-2">Password</label>
-            <input id="password1" type="password" placeholder="Password" pInputText class="w-full mb-3">
+            <input id="password1" 
+                   type="password" 
+                   formControlName="password"
+                   placeholder="Password" 
+                   pInputText 
+                   class="w-full mb-1"
+                   [ngClass]="{'ng-invalid ng-dirty': (submitted || signupForm.get('password')?.touched) && signupForm.get('password')?.errors}">
+            <small class="p-error block mb-3" *ngIf="(submitted || signupForm.get('password')?.touched) && signupForm.get('password')?.errors">
+                <span *ngIf="signupForm.get('password')?.errors?.['required']">Password is required.</span>
+                <span *ngIf="signupForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long.</span>
+            </small>
 
             <label for="password2" class="block text-900 font-medium mb-2">Confirm Password</label>
-            <input id="password2" type="password" placeholder="Confirm Password" pInputText class="w-full mb-3">
-    
-            <button pButton pRipple label="Create Account" icon="pi pi-user" class="w-full"></button>
-
-            <div class="flex align-items-center justify-content-between mb-6">
-                <a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer top-space" [routerLink]="['/auth/login']">Already have an account?</a>
+            <input id="password2" 
+                   type="password" 
+                   formControlName="confirmPassword"
+                   placeholder="Confirm Password" 
+                   pInputText 
+                   class="w-full mb-1"
+                   [ngClass]="{'ng-invalid ng-dirty': (submitted || signupForm.get('confirmPassword')?.touched) && signupForm.get('confirmPassword')?.errors}">
+            <small class="p-error block mb-3" *ngIf="(submitted || signupForm.get('confirmPassword')?.touched) && signupForm.get('confirmPassword')?.errors">
+                <span *ngIf="signupForm.get('confirmPassword')?.errors?.['required']">Please confirm your password.</span>
+                <span *ngIf="signupForm.get('confirmPassword')?.errors?.['passwordMismatch']">Passwords do not match.</span>
+            </small>
+            <br>
+            <div class="top-space">
+                <button pButton 
+                    pRipple 
+                    type="submit"
+                    label="Create Account" 
+                    icon="pi pi-user" 
+                    class="w-full">
+                </button>
             </div>
-        </div>
+            
+            <div class="flex align-items-center justify-content-between mb-6">
+                <a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer top-space" 
+                   [routerLink]="['/auth/login']">Already have an account?</a>
+            </div>
+        </form>
     </div>
-  </div>
+</div>
