@@ -22,15 +22,11 @@
             <label for="password2" class="block text-900 font-medium mb-2">Confirm Password</label>
             <input id="password2" type="password" placeholder="Confirm Password" pInputText class="w-full mb-3">
     
+            <button pButton pRipple label="Create Account" icon="pi pi-user" class="w-full"></button>
+
             <div class="flex align-items-center justify-content-between mb-6">
-                <div class="flex align-items-center">
-                    <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
-                    <label for="rememberme1" class="text-900">Remember me</label>
-                </div>
-                <a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Forgot password?</a>
+                <a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer top-space" [routerLink]="['/auth/login']">Already have an account?</a>
             </div>
-    
-            <button pButton pRipple label="Sign In" icon="pi pi-user" class="w-full"></button>
         </div>
     </div>
   </div>
