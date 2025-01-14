@@ -11,10 +11,6 @@ export class LoginComponent implements OnInit {
   submitted = false;
   showPassword = false;
 
-  togglePasswordVisibility(): void {
-    this.showPassword = !this.showPassword;
-  }
-
   constructor(private fb: FormBuilder) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -24,6 +20,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+  }
 
   onSubmit(): void {
     this.submitted = true;
