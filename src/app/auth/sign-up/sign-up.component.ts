@@ -9,6 +9,8 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 export class SignUpComponent implements OnInit {
   signupForm: FormGroup;
   submitted = false;
+  showPassword = false;
+  showConfirmPassword = false;
 
   constructor(private fb: FormBuilder) {
     this.signupForm = this.fb.group({
@@ -16,7 +18,7 @@ export class SignUpComponent implements OnInit {
       surname: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required]]
+      confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
     }, {
       validator: this.passwordMatchValidator
     });
@@ -45,6 +47,16 @@ export class SignUpComponent implements OnInit {
 
     return null;
   }
+
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+  }
+
+  toggleConfirmPasswordVisibility(): void {
+    this.showConfirmPassword = !this.showConfirmPassword;
+  }
+
 
   onSubmit(): void {
     this.submitted = true;
